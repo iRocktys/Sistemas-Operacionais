@@ -35,7 +35,7 @@ void round_robin(float quantum){
 void fcfs(){	
 	for(int i = 0; i < queueSize; i++){
 		iniciarProcesso(i);
-		//kill(spid[i], SIGSTOP);		
+		kill(spid[i], SIGSTOP);		
 	}
 }
 
