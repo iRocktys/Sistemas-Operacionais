@@ -1,0 +1,101 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct{
+	int pos_1[2];
+	int pos_2[2];
+	int pos_3[2];
+}quadro_3;
+
+
+typedef struct{
+	int pos_1[2];
+	int pos_2[2];
+	int pos_3[2];
+	int pos_4[2];
+}quadro_4;
+
+void opcaoTresQuadros(int *vetor, int tam){
+	int pageFault = 0, valor = 0, time = 1;
+	quadro_3 page[3];
+	
+	//Incrementos iniciais
+	//PageFault 1
+	page[0].pos_1[valor] = vetor[0];
+	page[0].pos_1[time] = 1;
+	page[0].pos_2[valor] = -1;
+	page[0].pos_2[time] = 0;
+	page[0].pos_3[valor] = -1;
+	page[0].pos_3[time] = 0;
+	pageFault++;
+	
+	//PageFault 2
+	page[1].pos_1[valor] = page[0].pos_1[valor];
+	page[1].pos_1[time] = page[0].pos_1[time] + 1;
+	page[1].pos_2[valor] = vetor[1];
+	page[1].pos_2[time] = 1;
+	page[1].pos_3[valor] = -1;
+	page[1].pos_3[time] = 0;
+	pageFault++;
+	
+	//PageFault 3
+	page[2].pos_1[valor] = page[1].pos_1[valor];
+	page[2].pos_1[time] = page[1].pos_1[time] + 1;
+	page[2].pos_2[valor] = page[1].pos_2[valor];
+	page[2].pos_2[time] = page[1].pos_2[time] + 1;
+	page[2].pos_3[valor] = vetor[2];
+	page[2].pos_3[time] = 1;
+	pageFault++;
+	
+	for(int i = 0; i < pageFault; i++ ){
+		printf("Page-Fault %d: %d %d %d \n", i+1, page[i].pos_1[0], page[i].pos_2[0], page[i].pos_3[0]);
+		printf("Time %d: %d %d %d \n", i+1, page[i].pos_1[time], page[i].pos_2[time], page[i].pos_3[time]);
+	}
+
+}
+
+int main(int argc, char *argv[]){
+	//Abrindo arquivos para leitura
+	FILE* Entrada;
+	FILE* Saida;
+	Entrada = fopen(argv[1], "r+");
+	
+	//variaveis utilizadas
+	int aux, tam=0, *vetor, i=0;
+	
+	//Verifica a abertura dos arquivos
+	if(Entrada == NULL){
+		printf("\nError 4:20 - Falha na abertura do arquivo\n");
+		system("pause");
+	}else{
+		printf("\nArquivo com sucesso!!\n");
+		
+		//contagem de paginas
+		while(!feof(Entrada)){
+			fscanf(Entrada,"%d", &aux);
+			tam++;
+		}
+		//reinicia o arquivo
+		rewind(Entrada);
+		//aloca o vetor dinamicamente de acordo com a quantidade de pagina
+		vetor = malloc(tam * sizeof(int));
+		//insere as paginas em cada posicao do vetor
+		while(!feof(Entrada)){
+			fscanf(Entrada,"%d", &aux);
+			vetor[i] = aux; 
+			i++;
+		}
+		/*
+		-- Teste de impressao do vetor
+		for(int i = 0; i < tam-1; i++){
+			printf("%d ", vetor[i]);
+		}
+		printf("\n");*/
+	}
+	opcaoTresQuadros(vetor, tam);
+	
+	//Fechando o arquivo Entrada
+	fclose(Entrada);
+	//fclose(Saida);
+}
