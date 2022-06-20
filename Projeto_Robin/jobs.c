@@ -16,20 +16,16 @@ void print_jobsQueue(){
 void iniciarProcesso(int index){
 
 	pid_t pid;	
+	//int status;
 
-	pid = fork();
-
-	if(pid == 0){
+	if((pid = fork()) == 0){
 		execlp(fila[index], argumentos[index],(char *)NULL);
-		kill(pid, SIGSTOP); 
-		
+		kill(pid, SIGSTOP); 		
 
 	}else{
 		//printf("spid [%d] = %d \n",pidx, spid[pidx]);
 		spid[pidx] = pid;
+		//wait(&status);
 		pidx++;	
-
 	}
-	
-	
 }

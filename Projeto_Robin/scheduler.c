@@ -5,6 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+
 
 extern void iniciarProcesso(int index);
 
@@ -32,13 +36,43 @@ void round_robin(float quantum){
 	
 }
 
-void fcfs(){	
-	for(int i = 0; i < queueSize; i++){
-		iniciarProcesso(i);
-		kill(spid[i], SIGSTOP);		
+void fcfs(){
+	pid_t iPid;
+	int status, i=0;
+	
+	while(i < queueSize){
+		if((iPid = fork()) < 0){
+			perror("Error 4:20 - Erro no Fork\n");
+		}
+		
+		if(iPid != 0){
+			wait(&status);
+				
+			if(WIFEXITED(status)){
+				i++;		
+			}
+		}else{
+			execlp(fila[i], argumentos[i],(char *)NULL);
+		}
 	}
 }
 
+void alternaTarefa(int signum){	
+	UNUSED(signum);
+	
+	receive = 1;
+	
+	kill(spid[alterna], SIGSTOP);
+	
+	if(alterna < (queueSize-1)){
+		alterna++;
+	}else{
+		alterna=0;
+	}
+	
+	kill(spid[alterna], SIGCONT);
+
+}
 
 void scheduler_init(char* jobs, float quantum){
 	int escalonador, aux = 1;
@@ -73,22 +107,7 @@ void scheduler_init(char* jobs, float quantum){
 }
 
 
-void alternaTarefa(int signum){	
-	UNUSED(signum);
-	
-	receive = 1;
-	
-	kill(spid[alterna], SIGSTOP);
-	
-	if(alterna < (queueSize-1)){
-		alterna++;
-	}else{
-		alterna=0;
-	}
-	
-	kill(spid[alterna], SIGCONT);
 
-}
 
 
 

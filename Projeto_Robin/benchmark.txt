@@ -1,4 +1,10 @@
-./teste
-./teste2
-./teste3
-./teste4
+./pag_1
+./pag_2
+./pag_3
+./pag_1
+./pag_1
+./pag_3
+./pag_2
+./pag_1
+./pag_3
+./pag_3
