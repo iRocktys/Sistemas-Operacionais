@@ -7,4 +7,4 @@
 
 ## Paginacao_LRU
 
-  Desenvolvido para o sistema Linux, paginacao e um exemplo de implementacao do  processo *"Least Recently Used - LRU"*. Para o funcionameno deve conter arquivo [teste.txt](https://github.com/iRocktys/Sistemas-Operacionais/blob/main/Arquivos_aux/teste.txt).
+  Desenvolvido para o sistema Linux, paginacao e um exemplo de implementacao do  processo *Least Recently Used - LRU*. Para o funcionameno deve conter arquivo [teste.txt](https://github.com/iRocktys/Sistemas-Operacionais/blob/main/Arquivos_aux/teste.txt).
