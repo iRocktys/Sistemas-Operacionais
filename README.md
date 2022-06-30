@@ -1,6 +1,6 @@
 # Sistemas-Operacionais
 
-Projeto_Robin(){
+/*Projeto_Robin(){
     Implementacao  escalonadores_de_processos: "Round-Robin","First-Come/First-Served - FCFS";
     Funcionalidade Linux;
     Comandos{
@@ -9,9 +9,9 @@ Projeto_Robin(){
         ./broker benchmark.txt: executar os escalonatores com a lista de processos, colocados no arquivo "benchmark.txt".
         brnchmark.txt: Arquivo contendo nome do executavel do processo "./teste".
         
-        //todos arquivos devem estar na mesma pasta, antes de iniciar os comandos.
+        todos arquivos devem estar na mesma pasta, antes de iniciar os comandos.
     }
-}  
+}*/
 
 Paginacao_LRU(){
     Implementacao processo_de_paginacao: "Least Recently Used - LUR";
