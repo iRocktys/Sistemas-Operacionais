@@ -1,7 +1,7 @@
 ## Projeto_Robin
 
   Desenvolvido para o sistema Linux, trata-se do exemplo de implementacao dos escalonadores *Round-Robin* e *First-Come/First-Served*.  
-  - [Comandos](https://github.com/iRocktys/Sistemas-Operacionais/blob/main/Arquivos_aux/comandos.txt)  - Comandos para funcionalidade do programa.
+  - [Comandos](https://github.com/iRocktys/Sistemas-Operacionais/blob/main/Arquivos_aux/Imagens/comandos_ProjRobin.png)  - Comandos para funcionalidade do programa.
   - [Benchmark](https://github.com/iRocktys/Sistemas-Operacionais/blob/main/Projeto_Robin/benchmark.txt) - Lista com nome dos processos a serem escalonados.
     
 
