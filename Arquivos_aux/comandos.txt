@@ -1,0 +1,5 @@
+make: inicializar os arquivos
+
+make clean: reinicializar a geracao dos arquivos 
+
+./broker benchmark.txt: executar os escalonatores com a lista de processos
