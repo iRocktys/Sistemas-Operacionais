@@ -1,6 +1,6 @@
 # Sistemas-Operacionais
 
-/*Projeto_Robin(){
+Projeto_Robin\n
     Implementacao  escalonadores_de_processos: "Round-Robin","First-Come/First-Served - FCFS";
     Funcionalidade Linux;
     Comandos{
